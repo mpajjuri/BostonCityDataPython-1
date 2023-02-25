@@ -53,9 +53,8 @@ jobCatCount = jobCat.value_counts().tolist()
 #plot the pie chart
 pd.Series(jobCatCount, index=jobCatList).plot.pie()
 
+# print out the ranked list of the top 10 highest mean salaries by job category
+print(salary.groupby(jobCat).mean().sort_values(ascending=False).head(10))
 
-# print out the average salary for each job category
-print(jobCatList.groupby(jobCatList).mean())
-
-# plot the average salary for each category on a bar chart
-jobCatList.groupby(jobCatList).mean().plot.bar()
+# plot the ranked list of the top 10 highest mean salaries by job category on a bar chart
+salary.groupby(jobCat).mean().sort_values(ascending=False).head(10).plot.bar()
